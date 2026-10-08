@@ -1,0 +1,120 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>Digital_Form_builder_Test</RootNamespace>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Utility\**" />
+    <EmbeddedResource Remove="Utility\**" />
+    <None Remove="Utility\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="C:\Users\nkumar\.nuget\packages\microsoft.azure.cosmos\3.27.0\contentFiles\any\netstandard2.0\ThirdPartyNotice.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <SpecFlowObsoleteCodeBehindFiles Remove="Features\Regression\002-Runner - Copy.feature.cs" />
+    <SpecFlowObsoleteCodeBehindFiles Remove="Features\Regression\003-Components - Copy.feature.cs" />
+    <SpecFlowObsoleteCodeBehindFiles Remove="Features\Regression\004-Submission - Copy.feature.cs" />
+    <SpecFlowObsoleteCodeBehindFiles Remove="Features\Regression\005-Footer - Copy.feature.cs" />
+    <SpecFlowObsoleteCodeBehindFiles Remove="Features\Regression\Regression - Copy.feature.cs" />
+    <SpecFlowObsoleteCodeBehindFiles Remove="Features\Regression\Regression.feature.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Cosmos" />
+    <PackageReference Include="Reqnroll" />
+    <PackageReference Include="Reqnroll.NUnit" />
+    <PackageReference Include="DotNetSeleniumExtras.PageObjects" />
+    <PackageReference Include="DotNetSeleniumExtras.PageObjects.Core" />
+    <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" />
+    <PackageReference Include="ExcelDataReader" />
+    <PackageReference Include="ExcelReader" />
+    <PackageReference Include="ExtentReports" />
+    <PackageReference Include="IKVM" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="NUnit" />
+    <PackageReference Include="NUnit3TestAdapter" />
+    <PackageReference Include="coverlet.collector" />
+    <PackageReference Include="Selenium.PhantomJS.WebDriver" />
+    <PackageReference Include="Selenium.Support" />
+    <PackageReference Include="Selenium.WebDriver" />
+    <PackageReference Include="Selenium.WebDriver.MSEdgeDriver" />
+    <PackageReference Include="Selenium.WebDriver.MSEdgeDriver.win32" />
+    <PackageReference Include="Serilog" />
+    <PackageReference Include="Serilog.Formatting.Compact" />
+    <PackageReference Include="Serilog.Sinks.File" />
+    <!--<PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.57" />-->
+    <PackageReference Include="System.Configuration.ConfigurationManager" />
+    <PackageReference Include="System.Data.SqlClient" />
+    <PackageReference Include="System.Text.RegularExpressions" />
+    <PackageReference Include="WebDriverManager" />
+    <PackageReference Include="InputSimulator" />
+	  <PackageReference Include="Selenium.WebDriver.MSEdgeDriver" Version="134.0.3124.72" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Features\Regression\001-Dashboard.feature.cs">
+      <DependentUpon>001-Dashboard.feature</DependentUpon>
+    </Compile>
+    <Compile Update="Features\Regression\004-Submission - Pipeline.feature.cs">
+      <DependentUpon>004-Submission - Pipeline.feature</DependentUpon>
+    </Compile>
+    <Compile Update="Features\Regression\005-Footer - Copy.feature.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Features\Regression\006-Component Designer Validation.feature.cs">
+      <DependentUpon>006-Component Designer Validation.feature</DependentUpon>
+    </Compile>
+    <Compile Update="Features\Regression\004-Submission.feature.cs">
+      <DependentUpon>004-Submission.feature</DependentUpon>
+    </Compile>
+    <Compile Update="Features\Regression\003-Components.feature.cs">
+      <DependentUpon>003-Components.feature</DependentUpon>
+    </Compile>
+    <Compile Update="Features\Regression\002-Runner.feature.cs">
+      <DependentUpon>002-Runner.feature</DependentUpon>
+    </Compile>
+    <Compile Update="Features\Sprint.feature.cs">
+      <DependentUpon>Sprint.feature</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <SpecFlowFeatureFiles Update="Features\Regression\001-Dashboard.feature">
+      <Visible>$(UsingMicrosoftNETSdk)</Visible>
+      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\Regression\004-Submission - Pipeline.feature">
+      <Visible>$(UsingMicrosoftNETSdk)</Visible>
+      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\Regression\005-Footer - Copy.feature">
+      <Visible>$(UsingMicrosoftNETSdk)</Visible>
+      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\Regression\006-Component Designer Validation.feature">
+      <Visible>$(UsingMicrosoftNETSdk)</Visible>
+      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\Regression\004-Submission.feature">
+      <Visible>$(UsingMicrosoftNETSdk)</Visible>
+      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\Regression\003-Components.feature">
+      <Visible>$(UsingMicrosoftNETSdk)</Visible>
+      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\Regression\002-Runner.feature">
+      <Visible>$(UsingMicrosoftNETSdk)</Visible>
+      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\Sprint.feature">
+      <Visible>$(UsingMicrosoftNETSdk)</Visible>
+      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
+    </SpecFlowFeatureFiles>
+  </ItemGroup>
+  <Target Name="CopyCustomContent" AfterTargets="AfterBuild">
+    <Copy SourceFiles="App.config" DestinationFiles="$(OutDir)\testhost.dll.config" />
+  </Target>
+</Project>

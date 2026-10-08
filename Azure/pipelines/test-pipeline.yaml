@@ -1,0 +1,46 @@
+trigger: none  # Manual trigger only
+
+pr: none
+
+parameters:
+  - name: tagName
+    displayName: 'Pipelinetest'
+    type: string
+    default: '@Pipelinetest'  # Updated default tag
+
+pool:
+  vmImage: 'windows-2022'
+
+variables:
+  solution: '**/*.sln'
+  buildConfiguration: 'Release'
+
+stages:
+  - stage: BuildAndTest
+    displayName: 'Build and Run SpecFlow Tests'
+    jobs:
+      - job: Build
+        steps:
+          - task: UseDotNet@2
+            inputs:
+              packageType: 'sdk'
+              version: '6.0.x'
+              installationPath: $(Agent.ToolsDirectory)/dotnet
+
+          - task: NuGetToolInstaller@1
+
+          - task: NuGetCommand@2
+            inputs:
+              restoreSolution: '$(solution)'
+
+          - task: DotNetCoreCLI@2
+            inputs:
+              command: 'build'
+              projects: '$(solution)'
+              arguments: '--configuration $(buildConfiguration)'
+
+          - task: DotNetCoreCLI@2
+            inputs:
+              command: 'test'
+              projects: '**/*Tests.csproj'
+              arguments: '--configuration $(buildConfiguration) --filter "TestCategory=${{ parameters.tagName }}"'
